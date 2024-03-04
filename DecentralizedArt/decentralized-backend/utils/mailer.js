@@ -6,7 +6,7 @@ const mailGenerator = new Mailgen({
     theme: "default",
     product: {
         name: "Decentalized Art MarketPlace",
-        link: "",
+        link: "localhost:3000",
         // Optional product logo
         logo: ""
     },
