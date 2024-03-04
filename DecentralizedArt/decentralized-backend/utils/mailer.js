@@ -29,7 +29,7 @@ const sendEmail = async (email, subject, emailBody) => {
   
     // Setup email data
     const mailOptions = {
-      from: `"Cente-Contacts" <${process.env.EMAIL_USER}>`,
+      from: `"Decentralized Art MarketPlace" <${process.env.EMAIL_USER}>`,
       to: email,
       subject: subject,
       html: emailContent
