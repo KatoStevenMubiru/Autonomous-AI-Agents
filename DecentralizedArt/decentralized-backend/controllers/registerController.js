@@ -1,24 +1,20 @@
-// controllers/registerController.js
-const firebaseAdmin = require('firebase-admin');
+// Import the initialized admin instance from utils/firebase.js
+const admin = require('../utils/firebase');
 const sendRegistrationEmail = require('../utils/sendRegistrationEmail');
-
-// Initialize Firebase Admin SDK
-// Make sure you have initialized Firebase Admin with the appropriate credentials before this step
-// firebaseAdmin.initializeApp({ ... });
 
 const register = async (req, res) => {
   const { email, firstName, lastName, username, password } = req.body;
 
   try {
-    // Create a new user with Firebase Authentication
-    const userRecord = await firebaseAdmin.auth().createUser({
+    // Create a new user with Firebase Authentication using the admin instance
+    const userRecord = await admin.auth().createUser({
       email,
       password,
       displayName: `${firstName} ${lastName}`,
     });
 
     // Generate a verification token
-    const verificationToken = await firebaseAdmin.auth().createCustomToken(userRecord.uid);
+    const verificationToken = await admin.auth().createCustomToken(userRecord.uid);
 
     // Send a registration email to the user
     await sendRegistrationEmail(email, firstName, verificationToken);
