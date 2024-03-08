@@ -1,9 +1,9 @@
-// Import the initialized admin instance from utils/firebase.js
+//controllers/registerController.js
 const admin = require('../utils/firebase');
 const sendRegistrationEmail = require('../utils/sendRegistrationEmail');
 
 const register = async (req, res) => {
-  const { email, firstName, lastName, username, password } = req.body;
+  const { email, firstName, lastName, password } = req.body;
 
   try {
     // Create a new user with Firebase Authentication using the admin instance
